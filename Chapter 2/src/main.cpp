@@ -17,7 +17,7 @@ int main(int argc, char* args[])
         {
             game->handleEvents();
             game->update();
-            game->draw();
+            game->render();
         }
 
         //This cleans up the game resources
