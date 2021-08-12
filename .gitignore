@@ -25,3 +25,7 @@ docs/
 
 #miscellaneous
 *.d
+
+#Output file
+output
+
