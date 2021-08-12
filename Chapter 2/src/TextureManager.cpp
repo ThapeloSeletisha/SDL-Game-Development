@@ -69,7 +69,18 @@ void TextureManager::drawFrame
     srcRect.y = height * (currentRow - 1);
     srcRect.w = destRect.w = width;
     srcRect.h = destRect.h = height;
-    destRect.x = int(currentFrame * 1.3) % w;
+
+    // Allows texture to move across the window 
+    // when drawFrame is called with the arg flip as
+    // SDL_FLIP_HORIZONTAL
+    if (flip == SDL_FLIP_HORIZONTAL)
+    {
+        destRect.x = w - int(currentFrame * 1.3) % (w + srcRect.w);
+    }
+    else 
+    {
+        destRect.x = int(currentFrame * 1.3) % w;
+    } 
     destRect.y = y;
 
     // Copy the texture to the renderer
