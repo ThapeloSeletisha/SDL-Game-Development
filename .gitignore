@@ -29,3 +29,6 @@ docs/
 #Output file
 output
 
+#VS Code files
+.vscode
+*.json
