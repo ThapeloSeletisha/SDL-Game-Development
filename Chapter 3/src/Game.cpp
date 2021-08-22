@@ -40,6 +40,8 @@ bool Game::init(const char* title, int x, int y, int w, int h, bool fullscreen)
                     cout << "SDL error: "  << SDL_GetError() << endl;
                     return false;
                 }
+                m_go.load(100, 100, 128, 82, "animate");
+                m_player.load(300, 300, 128, 82, "animate");
                 
             }
             else 
@@ -72,10 +74,12 @@ bool Game::init(const char* title, int x, int y, int w, int h, bool fullscreen)
 void Game::render()
 {
     SDL_RenderClear(m_renderer);
-    TheTextureManager::Instance()->draw("animate", 0,0, 128, 82,
-                           m_renderer);
-    TheTextureManager::Instance()->drawFrame("animate", 100,100, 128, 82,
-                               1, m_currentFrame, m_renderer, SDL_FLIP_NONE);
+    // TheTextureManager::Instance()->draw("animate", 0,0, 128, 82,
+    //                        m_renderer);
+    // TheTextureManager::Instance()->drawFrame("animate", 100,100, 128, 82,
+    //                            1, m_currentFrame, m_renderer, SDL_FLIP_NONE);
+    m_go.draw(m_renderer);
+    m_player.draw(m_renderer);
     SDL_RenderPresent(m_renderer);
 }
 //Handles any events
@@ -110,5 +114,8 @@ bool Game::running()
 void Game::update()
 {
     // Change sprite every 100ms
-    m_currentFrame = int((SDL_GetTicks() / 5));
+    // m_currentFrame = int((SDL_GetTicks() / 5));
+
+    m_go.update();
+    m_player.update();
 }
