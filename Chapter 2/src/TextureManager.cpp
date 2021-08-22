@@ -79,7 +79,7 @@ void TextureManager::drawFrame
     }
     else 
     {
-        destRect.x = int(currentFrame * 1.3) % w;
+        destRect.x = (int(currentFrame * 1.3) % (w + srcRect.w)) - srcRect.w;
     } 
     destRect.y = y;
 

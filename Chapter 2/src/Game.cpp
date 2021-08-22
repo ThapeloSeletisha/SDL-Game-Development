@@ -72,10 +72,10 @@ bool Game::init(const char* title, int x, int y, int w, int h, bool fullscreen)
 void Game::render()
 {
     SDL_RenderClear(m_renderer);
-    // TheTextureManager::Instance()->draw("animate", 0,0, 128, 82,
-    //                       m_renderer);
+    TheTextureManager::Instance()->draw("animate", 0,0, 128, 82,
+                           m_renderer);
     TheTextureManager::Instance()->drawFrame("animate", 100,100, 128, 82,
-                               1, m_currentFrame, m_renderer, SDL_FLIP_HORIZONTAL);
+                               1, m_currentFrame, m_renderer, SDL_FLIP_NONE);
     SDL_RenderPresent(m_renderer);
 }
 //Handles any events
