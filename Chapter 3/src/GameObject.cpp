@@ -16,15 +16,21 @@ void GameObject::load(int x, int y,
 
 void GameObject::draw(SDL_Renderer* pRenderer)
 {
-    TextureManager::Instance()->draw(m_textureID, 
+    TextureManager::Instance()->drawFrame(m_textureID, 
                                           m_x, m_y,
                                           m_width,
                                           m_height,
+                                          m_currentRow,
+                                          m_currentFrame,
                                           pRenderer);
-                 
 }
 
 void GameObject::update()
 {
     m_x++;
+}
+
+void GameObject::clean()
+{
+    // Not implemented 
 }

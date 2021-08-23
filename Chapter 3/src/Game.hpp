@@ -1,8 +1,10 @@
 #pragma once
 #include <iostream>
+#include <vector> 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "Player.hpp"
+#include "Enemy.hpp"
 
 
 class Game 
@@ -16,8 +18,10 @@ private:
 
     bool m_running;
 
-    GameObject m_go;
-    Player m_player;
+    GameObject* m_go;
+    GameObject* m_player;
+    GameObject* m_enemy;
+    std::vector<GameObject*> m_gameObjects;
 
 public:
     Game();

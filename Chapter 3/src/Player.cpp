@@ -13,5 +13,10 @@ void Player::draw(SDL_Renderer* pRenderer)
 
 void Player::update()
 {
-    m_x --;
+    m_x--;
+}
+
+void Player::clean()
+{
+    // Not implemented
 }

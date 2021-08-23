@@ -65,7 +65,7 @@ void TextureManager::drawFrame
     // Define and initialize the texture's rectangles
     SDL_Rect srcRect;
     SDL_Rect destRect;
-    srcRect.x = width * ((currentFrame / 20) % 6);
+    srcRect.x = width * ((currentFrame) % 6);
     srcRect.y = height * (currentRow - 1);
     srcRect.w = destRect.w = width;
     srcRect.h = destRect.h = height;
@@ -75,12 +75,13 @@ void TextureManager::drawFrame
     // SDL_FLIP_HORIZONTAL
     if (flip == SDL_FLIP_HORIZONTAL)
     {
-        destRect.x = w - int(currentFrame * 1.3) % (w + srcRect.w);
+        // destRect.x = w - int(currentFrame * 1.3) % (w + srcRect.w);
     }
     else 
     {
-        destRect.x = (int(currentFrame * 1.3) % (w + srcRect.w)) - srcRect.w;
+        // destRect.x = (int(currentFrame * 1.3) % (w + srcRect.w)) - srcRect.w;
     } 
+    destRect.x = x;
     destRect.y = y;
 
     // Copy the texture to the renderer
