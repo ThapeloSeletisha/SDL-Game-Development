@@ -2,6 +2,15 @@
 
 TextureManager* TextureManager::s_pInstance = 0;
 
+TextureManager* TextureManager::Instance()
+{
+    if(s_pInstance == 0)
+    {
+        s_pInstance = new TextureManager();
+    }
+    return s_pInstance;
+}
+
 // Loads and creates a new texture
 bool TextureManager::load
      (string fileName,string id,
@@ -88,4 +97,3 @@ void TextureManager::drawFrame
     SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect,
     &destRect, 0, 0, flip);
 }
-

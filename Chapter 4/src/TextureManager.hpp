@@ -15,14 +15,7 @@ private:
     
 
 public:
-    static TextureManager* Instance()
-    {
-        if(s_pInstance == 0)
-        {
-            s_pInstance = new TextureManager();
-        }
-        return s_pInstance;
-    }
+    static TextureManager* Instance();
   
     bool load(string fileName,string id,
               SDL_Renderer* pRenderer);

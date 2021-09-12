@@ -30,6 +30,7 @@ public:
     void handleEvents();
     void update();
     void clean();
+    void quit();
 
     SDL_Renderer* getRenderer() const;
     bool running();

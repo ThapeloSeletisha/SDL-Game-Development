@@ -1,5 +1,8 @@
 #include "Game.hpp"
+#include "InputHandler.hpp"
+
 Game* Game::s_pInstance = nullptr;
+
 Game::Game()
 {
     m_running = true;
@@ -52,6 +55,8 @@ bool Game::init(const char* title, int x, int y, int w, int h, bool fullscreen)
                     return false;
                 }
 
+                TheInputHandler::Instance()->initialiseControllers();
+
                 m_gameObjects.push_back(new Player
                     (new ParamsLoader(0, 100, 128, 82, "animate")));
                 m_gameObjects.push_back(new Enemy
@@ -101,25 +106,14 @@ void Game::render()
 //Handles any events
 void Game::handleEvents()
 {
-    SDL_Event e;
-    while (SDL_PollEvent(&e))
-    {
-        //There are events that need handling
-        switch(e.type)
-        {
-            case SDL_QUIT:
-                //User exits the game
-                m_running = false;
-                break;
-        }
-    }
+    TheInputHandler::Instance()->update();
 }
 //Cleans the resources used by game class
 void Game::clean()
 {
     SDL_DestroyRenderer(m_renderer);
     SDL_DestroyWindow(m_window);
-    SDL_Quit(); // Free SDL resources
+    TheInputHandler::Instance()->clean();
 }
 //Returns true if the game is still running
 bool Game::running()
@@ -136,6 +130,13 @@ void Game::update()
     {
         m_gameObjects[i]->update();
     }
+}
+
+void Game::quit()
+{
+    clean();
+    SDL_Quit(); // Free SDL resources
+    m_running = false;
 }
 SDL_Renderer* Game::getRenderer() const
 {
