@@ -26,6 +26,8 @@ void Player::clean()
 
 void Player::handleInput()
 {
+    m_velocity.setX(0);
+    m_velocity.setY(0);
     if(TheInputHandler::Instance()->controllersInitialised())
     {
         // Use the left analog stick on the first controller 
@@ -65,10 +67,8 @@ void Player::handleInput()
         {
             m_velocity.setY(-1);
         }
-
-        
-
     }
+
     // Use Keyboard arrows
     if(TheInputHandler::Instance()->
         isKeyDown(SDL_SCANCODE_RIGHT))
